@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards
+namespace dzem.Cards
 {
     [CreateAssetMenu(fileName = "card", menuName = "Cards/Card")]
     public class CardData : ScriptableObject

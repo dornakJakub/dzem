@@ -1,19 +1,20 @@
 
 using System.Collections.Generic;
-using Cards;
+using dzem.Cards;
 using UnityEngine;
 
-namespace Inventory
+namespace dzem.Inventory
 {
-    public class PlayerDeck
+    public class PlayerDeck :  MonoBehaviour
     {
         public const int MAX_CARDS = 7;
         public CardLibrary CardLibrary;
         public List<CardData> ActiveCards = new List<CardData>();
-        public IEnumerable<CardData> ownedCards;
+        public DeckUI deckUI;
 
-        void Start()
+        void Awake()
         {
+            Debug.LogError("ASDAS");
             for (int i = 0; i < MAX_CARDS; i++)
             {
                 AddRandomCard();
@@ -22,8 +23,9 @@ namespace Inventory
 
         public void AddRandomCard()
         {
-            CardData randomCard = CardLibrary.getRandomCard();
+            CardData randomCard = CardLibrary.GetRandomCard();
             if (randomCard != null)  ActiveCards.Add(randomCard);
+            Debug.LogError("ADDED");
         }
 
         public void UseCard(CardData card)

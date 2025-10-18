@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cards
+namespace dzem.Cards
 {
     [CreateAssetMenu(fileName = "CardLibrary", menuName = "Cards/CardLibrary")]
     public class CardLibrary :  ScriptableObject
     {
         public List<CardData> allCards = new List<CardData>();
 
-        public CardData getRandomCard()
+        public CardData GetRandomCard()
         {
             if (allCards.Count == 0) return null;
 

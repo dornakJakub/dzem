@@ -1,7 +1,7 @@
-using Cards;
+using dzem.Cards;
 using UnityEngine;
 
-namespace Inventory
+namespace dzem.Inventory
 {
     public class DeckUI : MonoBehaviour
     {
@@ -11,15 +11,16 @@ namespace Inventory
 
         void Start() => Refresh();
 
-        public void Refresh()
+        private void Refresh()
         {
             foreach (Transform child in container)
                 Destroy(child.gameObject);
-
-            foreach (CardData card in playerDeck.ownedCards)
+            
+            foreach (CardData card in playerDeck.ActiveCards)
             {
-                GameObject ui = Instantiate(cardUIPrefab, container);
-                ui.GetComponent<CardUI>().Setup(card);
+                var cardUI = Instantiate(cardUIPrefab, container);
+                var ui = cardUI.GetComponent<CardUI>();
+                ui.Setup(card, playerDeck);
             }
         }
     }
