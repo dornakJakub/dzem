@@ -14,7 +14,6 @@ namespace dzem.Inventory
 
         void Awake()
         {
-            Debug.LogError("ASDAS");
             for (int i = 0; i < MAX_CARDS; i++)
             {
                 AddRandomCard();
@@ -24,8 +23,14 @@ namespace dzem.Inventory
         public void AddRandomCard()
         {
             CardData randomCard = CardLibrary.GetRandomCard();
-            if (randomCard != null)  ActiveCards.Add(randomCard);
-            Debug.LogError("ADDED");
+            if (randomCard != null && HasCard(randomCard))
+            {
+                ActiveCards.Add(randomCard);
+            }
+            else
+            {
+                AddRandomCard();
+            }
         }
 
         public void UseCard(CardData card)
@@ -39,6 +44,11 @@ namespace dzem.Inventory
             {
                 Debug.LogError($"Card {card.name} is not in the list and has been used");
             }
+        }
+
+        public bool HasCard(CardData card)
+        {
+            return ActiveCards.Contains(card);
         }
     }
 }

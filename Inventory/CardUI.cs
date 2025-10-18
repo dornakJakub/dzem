@@ -13,7 +13,6 @@ namespace dzem.Inventory
 
         public void Setup(CardData cardData, PlayerDeck playerDeck)
         {
-            Debug.LogError(cardData.cardImage);
             _cardData = cardData;
             cardImage.sprite = _cardData.cardImage;
             _playerDeck = playerDeck;
