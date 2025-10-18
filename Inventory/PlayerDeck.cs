@@ -23,14 +23,7 @@ namespace dzem.Inventory
         public void AddRandomCard()
         {
             CardData randomCard = CardLibrary.GetRandomCard();
-            if (randomCard != null && HasCard(randomCard))
-            {
-                ActiveCards.Add(randomCard);
-            }
-            else
-            {
-                AddRandomCard();
-            }
+            while (ActiveCards.Contains(randomCard)) randomCard = CardLibrary.GetRandomCard();
         }
 
         public void UseCard(CardData card)

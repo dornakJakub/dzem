@@ -51,7 +51,7 @@ namespace dzem.Cards
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            // Optional: could snap or constrain position here
+            
         }
     }
 }
