@@ -1,5 +1,21 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Collections.Frozen;
+
+/*
+public class CardData
+{
+    public string cardName;
+    public float dropChance = 1f;
+    public Food food;
+    public int points;
+    public int ingCount;
+    public bool unlocked = false;
+    public bool isIng;
+    public int milestone;
+}
+
+*/
 
 
 enum Food_name
@@ -15,6 +31,7 @@ enum Food_name
     CHERRY,
     WHIPPED_WHITES,
     SUGAR,
+    FLOUR,
     CHOCOLATE,
     APPLE,
     POPPY,
@@ -28,11 +45,11 @@ enum Food_name
 
     //SAVORY INGREDIENTS
     TOMATO,
-    FLOUR,
     BEEF,
     PORK,
     CHICKEN,
     CHICKEN_SKEWER,
+
     CARROT,
     LETTUCE,
     CUCUMBER,
@@ -103,14 +120,16 @@ enum Food_name
 class Food
 {
     public Food_name name;
-    public int is_full;
-    public int is_full_plus;
-    public int is_side;
-    public int is_dessert;
-    public int taste;
-    public int points;
+    public int is_ingredient = 0;
+    public int is_full = 0;
+    public int is_full_plus = 0;
+    public int is_side = 0;
+    public int is_dessert = 0;
+    public int taste = 0;
+    public int points = 0;
     public List<Food_name> ingredients = new List<Food_name>();
-    public int ing_count;
+    public int ing_count = 0;
+    public int unlocked = 0;
 
 
 
@@ -119,6 +138,8 @@ class Food
 class Program
 {
 
+
+   
     public static List<Food_name> get_ingredients(Food_name food)
     {
 
@@ -193,7 +214,7 @@ class Program
             case Food_name.BAKED_ALASKA:
                 return new List<Food_name> { Food_name.ICE_CREAM, Food_name.WHIPPED_WHITES }; //2
             case Food_name.TIRAMISU:
-                return new List<Food_name> { Food_name.COFFEE_CUP, Food_name.HEAVY_CREAM, Food_name.SUGAR, Food_name.BISCUIT }; //4
+                return new List<Food_name> { Food_name.COFFEE_CUP, Food_name.HEAVY_CREAM, Food_name.SUGAR, Food_name.BISCUIT, Food_name.EGG }; //4
             default:
                 return new List<Food_name> { };
         }
@@ -274,13 +295,151 @@ class Program
         points += 6 * food.ingredients.Count;
         return points;
     }
-        
 
 
- 
+    int plate_points(List<CardData> plate_content, Dictionary<Food_name, Food>[] recipes)
+    {
+        int max_ingredients = plate_content.food.ing_count;
+
+        for (int recipe_group = max_ingredients - 1; recipe_group > -1; recipe_group--)
+        {
+            foreach (Food recipe in recipes[recipe_group])
+            {
+                //Determines if recipe was found on plate
+                if (recipe.ingredients.All(item => plate_content.Contains(item)))
+                {
+                    //substitutes ingredients on plate by dish_name
+                    foreach (var item in listA)
+                    {
+                        plate_content.Remove(item);
+                    }
+                    plate_content.Add(recipe);
+                    break;
+                }
+
+            }
+            break;
+        }
+
+        //Plate food evaluated
+        int points = 0;
+        int ing;
+        int full;
+        int full_plus;
+        int side;
+        int dessert;
+        int main_taste = 0;
+
+        //Types of content on plate
+        foreach (Food food in plate_content)
+        {
+
+            if (food.is_full)
+            {
+                full++;
+                points += food.points;
+            }
+            else if (food.is_full_plus)
+            {
+                full_plus++;
+                points += food.points;
+            }
+            else if (food.is_dessert)
+            {
+                dessert++;
+                points += food.points;
+            }
+            else if (food.is_side)
+            {
+                side++;
+                points += food.points;
+            }
+            else
+            {
+                ing++;
+            }
+        }
+
+        //main taste
+        foreach (Food food in plate_content)
+        {
+            if (main_taste == 0)
+            {
+                if (food.is_full)
+                {
+                    main_taste = food.taste;
+                    break;
+                }
+                else if (food.is_full_plus && !full)
+                {
+                    main_taste = food.taste;
+                    break;
+                }
+                else if (food.is_dessert && !full && !full_plus)
+                {
+                    main_taste = food.taste;
+                    break;
+                }
+                else if (food.is_side && !full & !full_plus && !dessert)
+                {
+                    main_taste = food.taste;
+                    break;
+                }
+                else if (!full && !full_plus && !dessert && !side)
+                {
+                    main_taste = food.taste;
+                    break;
+                }
+            }
+        }
+
+        //Subtract incorrect ingredients
+        if (full_plus && !side)
+        {
+            points *= 0.75;
+        } else if (full && side)
+        {
+            points *= 0.9;
+        }
+
+        //Sub points for incorrect taste pairings
+        foreach (Food food in plate_content)
+        {
+            if (food.is_ingredient && (food.taste == main_taste))
+            {
+                if (food.points >= 13)
+                {
+                    points -= food.points / 2;
+                }
+                points -= food.points;
+            }
+            else if (food.is_ingredient && (food.taste != main_taste))
+            {
+                if (food.points >= 13)
+                {
+                    points -= food.points;
+                }
+                points -= food.points * 2;
+            }
+
+        }
+
+        return points;
+    }
+
+
+
+
     static void Main()
     {
-        Dictionary<Food_name, Food> all_food = new Dictionary<Food_name, Food>();
+        Dictionary<Food_name, Food>[] all_food = new Dictionary<Food_name, Food>[6];
+
+        for (int i = 0; i < all_food.Length; i++)
+        {
+            all_food[i] = new Dictionary<Food_name, Food>();
+        }
+
+
         foreach (Food_name food in Enum.GetValues(typeof(Food_name)))
         {
             Food current_food = new Food();
@@ -291,10 +450,8 @@ class Program
             {
 
                 current_food.ingredients.Add(food);
-                current_food.is_full = 0;
-                current_food.is_full_plus = 0;
-                current_food.is_side = 0;
-                current_food.is_dessert = 0;
+                current_food.is_ingredient = 1;
+
 
                 if (food < Food_name.CHERRY)
                 {
@@ -318,10 +475,7 @@ class Program
             else if (food < Food_name.ICE_CREAM)
             {
                 current_food.ingredients.Add(food);
-                current_food.is_full = 0;
-                current_food.is_full_plus = 0;
                 current_food.is_side = 1;
-                current_food.is_dessert = 0;
                 current_food.taste = -1;
                 current_food.points = set_ingredient_points(food);
 
@@ -330,9 +484,6 @@ class Program
             else if (food >= Food_name.ICE_CREAM && food < Food_name.SPAGHETTI_MARINARA)
             {
                 current_food.ingredients.Add(food);
-                current_food.is_full = 0;
-                current_food.is_full_plus = 0;
-                current_food.is_side = 0;
                 current_food.is_dessert = 1;
                 current_food.taste = 1;
                 current_food.points = set_ingredient_points(food);
@@ -345,36 +496,24 @@ class Program
                 if (food >= Food_name.SPAGHETTI_MARINARA && food < Food_name.STEAK)
                 {
                     current_food.is_full = 1;
-                    current_food.is_full_plus = 0;
-                    current_food.is_side = 0;
-                    current_food.is_dessert = 0;
                     current_food.taste = -1;
 
                 }
                 //FULL_PLUS
                 else if (food >= Food_name.STEAK && food < Food_name.GARLIC_BREAD)
                 {
-                    current_food.is_full = 0;
                     current_food.is_full_plus = 1;
-                    current_food.is_side = 0;
-                    current_food.is_dessert = 0;
                     current_food.taste = -1;
                 }
                 //NOT BASIC SIDES
                 else if (food >= Food_name.GARLIC_BREAD && food < Food_name.CHERRY_PIE)
                 {
-                    current_food.is_full = 0;
-                    current_food.is_full_plus = 0;
                     current_food.is_side = 1;
-                    current_food.is_dessert = 0;
                     current_food.taste = -1;
                 }
                 //DESSERTS
                 else
                 {
-                    current_food.is_full = 0;
-                    current_food.is_full_plus = 0;
-                    current_food.is_side = 0;
                     current_food.is_dessert = 1;
                     current_food.taste = 1;
 
@@ -386,23 +525,15 @@ class Program
 
             //add food to dictionary
             current_food.ing_count = current_food.ingredients.Count;
-            all_food[food] = current_food;
+
+            all_food[current_food.ing_count - 1].Add(current_food.name, current_food);
+
+
 
         }
 
-        Console.WriteLine($"FOOD NAME: {all_food[Food_name.TIRAMISU].name}, INGREDIENTS: {string.Join(", ", all_food[Food_name.TIRAMISU].ingredients)}");
-        Console.WriteLine($"{Enum.GetValues(typeof(Food_name)).Length}");
-        Console.WriteLine($"CHERRY IS FOR {all_food[Food_name.CHERRY].points} POINTS!");
-        Console.WriteLine($"STEAK_POINTS: {all_food[Food_name.STEAK].points}");
-        Console.WriteLine($"LASAGNE: {all_food[Food_name.LASAGNE].points}");
-        Console.WriteLine($"BAKED_ALASKA:  {all_food[Food_name.BAKED_ALASKA].points}");
-        Console.WriteLine($"SCHWARZWALDEN: {all_food[Food_name.SCHWARZWALDEN].points}");
-        Console.WriteLine($"SCHWARZWALDEN ing count: {all_food[Food_name.SCHWARZWALDEN].ing_count}");
+       
 
-
-
-        
-        
     }
 
 }
