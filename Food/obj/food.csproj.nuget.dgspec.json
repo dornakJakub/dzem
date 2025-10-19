@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ubuntu/gamejam/food/food.csproj": {}
+    "/mnt/c/Users/vejka/OneDrive/Documents/GitHub/dzem/Food/food.csproj": {}
   },
   "projects": {
-    "/home/ubuntu/gamejam/food/food.csproj": {
+    "/mnt/c/Users/vejka/OneDrive/Documents/GitHub/dzem/Food/food.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ubuntu/gamejam/food/food.csproj",
+        "projectUniqueName": "/mnt/c/Users/vejka/OneDrive/Documents/GitHub/dzem/Food/food.csproj",
         "projectName": "food",
-        "projectPath": "/home/ubuntu/gamejam/food/food.csproj",
+        "projectPath": "/mnt/c/Users/vejka/OneDrive/Documents/GitHub/dzem/Food/food.csproj",
         "packagesPath": "/home/ubuntu/.nuget/packages/",
-        "outputPath": "/home/ubuntu/gamejam/food/obj/",
+        "outputPath": "/mnt/c/Users/vejka/OneDrive/Documents/GitHub/dzem/Food/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ubuntu/.nuget/NuGet/NuGet.Config"
