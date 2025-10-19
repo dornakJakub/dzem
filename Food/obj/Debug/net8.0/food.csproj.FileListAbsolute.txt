@@ -1,0 +1,14 @@
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.GeneratedMSBuildEditorConfig.editorconfig
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.AssemblyInfoInputs.cache
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.AssemblyInfo.cs
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.csproj.CoreCompileInputs.cache
+/home/ubuntu/gamejam/food/bin/Debug/net8.0/food
+/home/ubuntu/gamejam/food/bin/Debug/net8.0/food.deps.json
+/home/ubuntu/gamejam/food/bin/Debug/net8.0/food.runtimeconfig.json
+/home/ubuntu/gamejam/food/bin/Debug/net8.0/food.dll
+/home/ubuntu/gamejam/food/bin/Debug/net8.0/food.pdb
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.dll
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/refint/food.dll
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.pdb
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/food.genruntimeconfig.cache
+/home/ubuntu/gamejam/food/obj/Debug/net8.0/ref/food.dll
