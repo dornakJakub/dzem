@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: schnitzel_chicken
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: schnitzel_chicken
+  cardImage: {fileID: 2961301736200306166, guid: 8d142b1a0d263a44d82050b971b83b65, type: 3}
+  dropChance: 1
+  food:
+    name: 61
+    is_full: 0
+    is_full_plus: 1
+    is_side: 0
+    is_dessert: 0
+    taste: -1
+    ingredients: 16000000130000002200000003000000
+  points: 33
+  ingCount: 4
+  unlocked: 0
+  isIng: 0

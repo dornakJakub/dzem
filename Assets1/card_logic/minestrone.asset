@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: minestrone
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: minestrone
+  cardImage: {fileID: -4076594495545803798, guid: 99c9ef2e5995cea48950c3af9d225c92, type: 3}
+  dropChance: 1
+  food:
+    name: 50
+    is_full: 1
+    is_full_plus: 0
+    is_side: 0
+    is_dessert: 0
+    taste: -1
+    ingredients: 20000000120000002400000017000000
+  points: 33
+  ingCount: 4
+  unlocked: 0
+  isIng: 0

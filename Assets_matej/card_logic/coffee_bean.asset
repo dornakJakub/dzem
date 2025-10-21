@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: coffee_bean
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: coffee_bean
+  cardImage: {fileID: -5504669948686478978, guid: 1168d52cd094222488df40fe45c425e4, type: 3}
+  dropChance: 1
+  food:
+    name: 16
+    is_full: 0
+    is_full_plus: 0
+    is_side: 0
+    is_dessert: 0
+    taste: 1
+    ingredients: 10000000
+  points: 4
+  ingCount: 1
+  unlocked: 0
+  isIng: 1

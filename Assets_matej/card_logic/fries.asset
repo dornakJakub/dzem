@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: fries
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: fries
+  cardImage: {fileID: -8244571485842297838, guid: 09c793bddf11c914d8fb2faab33c5456, type: 3}
+  dropChance: 1
+  food:
+    name: 40
+    is_full: 0
+    is_full_plus: 0
+    is_side: 1
+    is_dessert: 0
+    taste: -1
+    ingredients: 28000000
+  points: 30
+  ingCount: 1
+  unlocked: 0
+  isIng: 1

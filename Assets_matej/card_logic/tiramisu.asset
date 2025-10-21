@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: tiramisu
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: tiramisu
+  cardImage: {fileID: 6826726903097939347, guid: b95bd8aec81968042b5d78444a0388b3, type: 3}
+  dropChance: 1
+  food:
+    name: 78
+    is_full: 0
+    is_full_plus: 0
+    is_side: 0
+    is_dessert: 1
+    taste: 1
+    ingredients: 0400000011000000070000000d00000003000000
+  points: 75
+  ingCount: 5
+  unlocked: 0
+  isIng: 0
+  milestone: 0
