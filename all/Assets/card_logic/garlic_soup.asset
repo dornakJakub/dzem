@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: garlic_soup
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: garlic_soup
+  cardImage: {fileID: 1363098489973052661, guid: 461c89e6a8640d54c841c0ec4e76af39, type: 3}
+  dropChance: 1
+  food:
+    name: 49
+    is_full: 1
+    is_full_plus: 0
+    is_side: 0
+    is_dessert: 0
+    taste: -1
+    ingredients: 2000000016000000240000001700000025000000
+  points: 46
+  ingCount: 5
+  unlocked: 0
+  isIng: 0

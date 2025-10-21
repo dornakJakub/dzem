@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6adc60a84c89294380d67b80ca6ea44, type: 3}
+  m_Name: risotto_pork
+  m_EditorClassIdentifier: Assembly-CSharp::card_logic.CardData
+  cardName: risotto_pork
+  cardImage: {fileID: 4756082719802100702, guid: eff25b65160ba6444ad1bb08836673a4, type: 3}
+  dropChance: 1
+  food:
+    name: 0
+    is_full: 1
+    is_full_plus: 0
+    is_side: 0
+    is_dessert: 0
+    taste: -1
+    ingredients: 270000001700000015000000
+  points: 27
+  ingCount: 3
+  unlocked: 0
+  isIng: 0
